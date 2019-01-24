@@ -1,0 +1,84 @@
+# Site Info
+title: Software engineer
+tagline: 'J'
+description: 'J'
+baseurl: ""
+url: https://JimBae.github.io
+logo: '/public/logo.png'
+
+# Site configurations
+gems:
+  - jekyll-paginate
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss
+paginate: 5
+paginate_path: '/blog/page:num'
+permalink: pretty
+
+version: 1.0
+
+# About/contact
+author:
+  name: J
+  description: J's blog
+  contact:
+    linkedin:  https://www.linkedin.com/in/jinhyukbae
+    github:    https://github.com/jimbae
+    email:     mailto:jinhyuk.b@gmail.com
+    #twitter:   https://twitter.com/xxx
+
+# Navigation (2nd level links supported)
+nav:
+  Home:
+    - '/blog/categories/'
+  Categories:
+    - '/blog/categories/'
+    # - { Categories All: '/blog/categories/' }
+    - { Blog: '/blog/categories/#blog' }
+    
+    - { C++: '/blog/categories/#c' }
+    - { Python: '/blog/categories/#python' }
+    - { Linux: '/blog/categories/#linux' }
+
+    - { Flask: '/blog/categories/#flask' }
+    - { Django: '/blog/categories/#django' }
+    - { Node.js: '/blog/categories/#nodejs' }
+    
+    - { Algorithm: '/blog/categories/#algorithm' }
+    - { Design Pattern: '/blog/categories/#designPattern' }
+
+    - { CG: '/blog/categories/#CG' }
+    - { ML: '/blog/categories/#ML' }
+    
+    - { iOS: '/blog/categories/#iOS' }
+    - { Windows: '/blog/categories/#windows' }
+    - { MAC OS: '/blog/categories/#macOs' }
+    - { Linux: '/blog/categories/#linux' }
+
+    - { Book: '/blog/categories/#book' }
+    - { Tips: '/blog/categories/#tips' }
+    
+  Tags: 
+    - '/blog/tags/'
+
+  About:
+    - '/about/'
+
+# Where are tags and categories displayed
+tag_page: '/blog/tags/'
+category_page: '/blog/categories/'
+
+hero:
+  image: /public/img/hello_page.png
+  caption: J's blog
+
+# Pugl-In
+mathjax: true
+google_analytics_token: 'UA-133171090-1'
+#disqus_short_name: ''
