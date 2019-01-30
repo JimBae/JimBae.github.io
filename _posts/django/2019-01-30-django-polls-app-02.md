@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Django Polls app
+title: Django Polls App Part2/7
 category: Django
 permalink: /django/:year/:month/:day/:title/
 
@@ -493,5 +493,6 @@ admin.site.register(Question)
 
 ***
 [Reference 한글](https://docs.djangoproject.com/ko/1.11/intro/tutorial02/)
+</br>
 [Reference 영문](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
 
