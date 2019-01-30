@@ -44,17 +44,20 @@ nav:
     
     - { C++: '/blog/categories/#c' }
     - { Python: '/blog/categories/#python' }
-    - { Linux: '/blog/categories/#linux' }
+    - { C\#: '/blog/categories/#csharp' }
 
     - { Flask: '/blog/categories/#flask' }
     - { Django: '/blog/categories/#django' }
     - { Node.js: '/blog/categories/#nodejs' }
-    
-    - { Algorithm: '/blog/categories/#algorithm' }
-    - { Design Pattern: '/blog/categories/#designPattern' }
 
     - { CG: '/blog/categories/#CG' }
     - { ML: '/blog/categories/#ML' }
+    - { AR: '/blog/categories/#AR' }
+
+    - { Unity: '/blog/categories/#Unity' }
+
+    - { Algorithm: '/blog/categories/#algorithm' }
+    - { Design Pattern: '/blog/categories/#designPattern' }
     
     - { iOS: '/blog/categories/#iOS' }
     - { Windows: '/blog/categories/#windows' }
@@ -62,6 +65,7 @@ nav:
     - { Linux: '/blog/categories/#linux' }
 
     - { Book: '/blog/categories/#book' }
+    - { 번역: '/blog/categories/#translation' }
     - { Tips: '/blog/categories/#tips' }
     
   Tags: 
