@@ -493,6 +493,6 @@ admin.site.register(Question)
 
 ***
 [Reference 한글](https://docs.djangoproject.com/ko/1.11/intro/tutorial02/)
-</br>
+<br>
 [Reference 영문](https://docs.djangoproject.com/en/2.1/intro/tutorial02/)
 

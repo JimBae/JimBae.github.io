@@ -7,7 +7,7 @@ permalink: /django/:year/:month/:day/:title/
 tag: [Django, Python]
 ---
 
-## 설문조사 앱 만들기, Part1/7
+# 설문조사 앱 만들기, Part1/7
 
 이번 app은 submodule 말고, top-level에서 바로 import 할 수 있게끔 manage.py 와 같은 레벨에서 생성해보자.
 
@@ -97,7 +97,8 @@ url() 인수: kwargs
 url() 인수: name
 URL 에 이름을 지으면, 템플릿을 포함한 장고 어디에나 명확하게 참조할 수 있다. 이 강력한 기능을 이용하여, 단 하나의 파일만 수정해도 project내의 모든 URL 패턴을 바꿀 수도 있도록 도와준다. 
 
+***
 [Reference 한글](https://docs.djangoproject.com/ko/1.11/intro/tutorial01/)
-</br>
+<br>
 [Reference 영문](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)
 
