@@ -12,7 +12,7 @@ tag: [Django, Python]
 ## 간단한 폼 만들기
 
 ```
-# polls/templates/polls/detail.html
+polls/templates/polls/detail.html
 
 <h1>{{ question.question_text }}</h1>
 
