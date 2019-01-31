@@ -125,6 +125,7 @@ polls/templates/polls 라고 만들 필요 없이, 그냥 polls/templates 에 �
 
 template에 다음과 같은 코드를 입력합니다.
 ~~~
+
 polls/templates/polls/index.html
 {% if latest_question_list %}
     <ul>
@@ -240,13 +241,6 @@ poll 어플리케이션의 detail() view 로 되돌아 가봅시다. context 변
 
 ~~~
 # polls/templates/polls/detail.html
-
-<h1>{{ question.question_text }}</h1>
-<ul>
-    {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}</li>
-    {% endfor %}
-</ul>
 ~~~
 
 template 시스템은 변수의 속성에 접근하기 위해 점-탐색(dot-lookup) 문법을 사용합니다. 예제의 {{ question.question_text }} 구문을 보면, Django 는 먼저 question 객체에 대해 사전형으로 탐색합니다. 탐색에 실패하게 되면 속성값으로 탐색합니다. (이 예에서는 속성값에서 탐색이 완료됩니다만) 만약 속성 탐색에도 실패한다면 리스트의 인덱스 탐색을 시도하게 됩니다.
