@@ -206,3 +206,31 @@ def detail(request, question_id):
 {{ question }}
 ~~~
 
+이제 시작해도 된다.
+
+## A shortcut: get_object_or_404()
+만약 객체에 존재하지 않을 때 get()을 사용하여 Http404 예외를 발생시키는 것은 자주 쓰이는 용법이다. 
+Django에서 이 기능에 대한 단축기능을 제공한다. detail() view 를 단축 기능으로 작성하면 다음과 같습니다.
+
+~~~
+# polls/views.py
+from django.shortcuts import get_object_or_404, render
+
+from .models import Question
+# ...
+def detail(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/detail.html', {'question': question})
+~~~
+
+get_object_or_404() 함수는 Django 모델을 첫번째 인자로 받고, 몇개의 키워드 인수를 모델 관리자의 get()함수에 넘긴다. 만약 객체가 존재하지 않을 경우, Http404 예외가 발생한다.
+
+~~~
+> 철학
+상위 계층에서 ObjectDoesNotExist 예외를 자동으로 잡아 내는 대신 get_object_or_404() 도움 함수를 사용하거나, ObjectDoesNotExist 예외를 사용하는 대신 Http404 를 사용하는 이유는 무엇일까요?
+
+왜냐하면, model 계층을 view 계층에 연결하는 방법이기 때문입니다. Django 의 중요한 설계 목표는, 약결합(loose coupling)을 관리하는데에 있습니다. 일부 제어된 결합이 django.shortcuts 모듈에서 도입되었습니다.
+~~~
+
+또한, get_object_or_404() 함수처럼 동작하는 get_list_or_404() 함수가 있다. get() 대신 filter()를 쓴다는 것이 다르다. 리스트가 비어있을 경우, Http404 예외를 발생시킨다.
+
