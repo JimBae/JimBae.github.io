@@ -6,12 +6,11 @@ permalink: /django/:year/:month/:day/:title/
 
 tag: [Django, Python]
 ---
-
 # 설문조사 앱 만들기, Part4/7
 간단한 폼 처리와 소스코드를 줄여가는데 중점을 두겠다.
 
 ## 간단한 폼 만들기
-poll detail template ("polls/detail.html")
+poll detail template "polls/detail.html"
 
 ~~~
 # polls/templates/polls/detail.html
