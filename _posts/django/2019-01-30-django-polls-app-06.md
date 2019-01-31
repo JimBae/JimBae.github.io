@@ -41,11 +41,11 @@ li a {
 ~~~
 # polls/templates/polls/index.html
 
-{% load static %}
+{\% load static \%}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{\% static 'polls/style.css' \%}" />
 ~~~
-{% static %} 템플릿 태그는 정적 파일의 절대 URL을 생성합니다.
+{\% static \%} 템플릿 태그는 정적 파일의 절대 URL을 생성합니다.
 
 개발할 때 이것만 하면 됩니다. http://localhost:8000/polls/를 새로 고침하면, 질문 링크가 녹색 (Django 스타일!) 인 것을 볼 수 있습니다. 이는 스타일 시트가 제대로 로드되었음을 의미합니다.
 
@@ -66,7 +66,7 @@ http://localhost:8000/polls/을 새로 고침하면 화면의 오른쪽 하단�
 
 ~~~
 > 경고
-물론 장고가 생성하지 않은 스타일 시트 같은 정적 파일에는 {% static %} 템플릿 태그는 사용할 수 없습니다. 정적 파일 사이에서 링크는 상대 경로를 사용해야합니다. STATIC_URL (static 템플릿 태그가 URL을 생성하기 위해 사용)을 변경할 수 있기 때문에 정적 파일에서 여러 경로를 수정할 필요가 없습니다.
+물론 장고가 생성하지 않은 스타일 시트 같은 정적 파일에는 {\% static \%} 템플릿 태그는 사용할 수 없습니다. 정적 파일 사이에서 링크는 상대 경로를 사용해야합니다. STATIC_URL (static 템플릿 태그가 URL을 생성하기 위해 사용)을 변경할 수 있기 때문에 정적 파일에서 여러 경로를 수정할 필요가 없습니다.
 ~~~
 
 지금까지 내용은 기본입니다. 프레임 워크에 포함된 설정 및 다른 것들에 대한 자세한 내용은 정적 파일 howto 와 [정적파일 레퍼런스](https://docs.djangoproject.com/ko/1.11/ref/contrib/staticfiles/)를 참조하십시오. [정적 파일 배포](https://docs.djangoproject.com/ko/1.11/howto/static-files/deployment/)는 실제 서버에서 정적 파일을 사용하는 방법을 설명합니다.
