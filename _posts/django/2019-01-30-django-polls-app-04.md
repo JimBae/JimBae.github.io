@@ -18,5 +18,6 @@ tag: [Django, Python]
 
 {\% if error_message \%}<p><strong>{{ error_message }}</strong></p>{\% endif \%}
 
+<form action="{% url 'polls:vote' question.id %}" method="post">
 ```
 
