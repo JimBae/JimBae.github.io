@@ -12,21 +12,22 @@ tag: [Django, Python]
 ## 간단한 폼 만들기
     * poll detail template
 
-~~~
-## polls/templates/polls/detail.html
-#<h1>{{ question.question_text }}</h1>
-#
-#{\% if error_message \%}<p><strong>{{ error_message }}</strong></p>{\% endif \%}
-#
-#<form action="{% url 'polls:vote' question.id %}" method="post">
-#{\% csrf_token \%}
-#{\% for choice in question.choice_set.all \%}
-#    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-#    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-#{\% endfor \%}
-#<input type="submit" value="Vote" />
-#</form>
-~~~
+```
+# polls/templates/polls/detail.html
+
+<h1>{{ question.question_text }}</h1>
+
+{\% if error_message \%}<p><strong>{{ error_message }}</strong></p>{\% endif \%}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{\% csrf_token \%}
+{\% for choice in question.choice_set.all \%}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{\% endfor \%}
+<input type="submit" value="Vote" />
+</form>
+```
 
 간략하게 설명하면:
     * 위의 템플릿은 각 질문 선택 항목에 대한 라디오 버튼을 표시합니다. 각 라디오 버튼의 value 는 연관된 질문 선택 항목의 ID입니다. 각 라디오 버튼의 name 은 "choice"입니다. 즉, 누군가가 라디오 버튼 중 하나를 선택하여 폼을 제출하면, POST 데이터 인 choice=#을 보낼 것입니다. 여기서 #은 선택한 항목의 ID입니다. 이것은 HTML 폼의 기본 개념입니다.
@@ -39,13 +40,13 @@ tag: [Django, Python]
 
 이제 제출된 데이터를 처리하고 그 데이터로 무언가를 수행하는 Django 뷰를 작성하겠습니다. 튜토리얼 3 에서 설문조사 어플리케이션을 위해 아래에 나와있는 코드를 포함하는 URLconf 를 만들었습니다:
 
-~~~
+```
 # polls/urls.py
 path('<int:question_id>/vote/', views.vote, name='vote'),
-~~~
+```
 또, 우리는 vote() 함수를 가상으로 만들었다. 실제로 구현을 해보자. polls/views.py에 다음을 추가하자.
 
-~~~
+```
 # polls/views.py
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
@@ -70,7 +71,7 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-~~~
+```
 
 위 코드는 이 튜토리얼에서 아직 다루지 않은 몇 가지를 포함하고 있습니다:
 
@@ -86,28 +87,28 @@ def vote(request, question_id):
 
     * 우리는 이 예제에서 HttpResponseRedirect 생성자 안에서 reverse() 함수를 사용하고 있습니다. 이 함수는 뷰 함수에서 URL을 하드코딩하지 않도록 도와줍니다. 제어를 전달하기 원하는 뷰의 이름을, URL패턴의 변수부분을 조합해서 해당 뷰를 가리킵니다. 여기서 우리는 튜토리얼 3 에서 설정했던 URLconf를 사용하였으며, 이 reverse() 호출은 아래와 같은 문자열을 반환할 것입니다
 
-~~~
+```
 '/polls/3/results/'
-~~~
+```
 
 여기서 3은 question.id의 값이다. 이렇게 리디렉션된 URL은 최종 페이지를 표시하기 위해 'results' 뷰를 호출한다.
 
 튜토3에서 언급했듯이, request는 HttpRequest 개체입니다. HttpResuqest 개체에 대해 더 알고 싶다면 [reuqest and response document](https://docs.djangoproject.com/ko/1.11/ref/request-response/) 를 참고하라.
 
 어떤 이가 설문조사에 설문을 하고난 뒤에는, vote() 뷰는 설문조사 결과 페이지로 리다이렉트합니다. 그 뷰를 작성해보자.
-~~~
+```
 # polls/views.py
 from django.shortcuts import get_object_or_404, render
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
-~~~
+```
 
 튜토3의 detail()뷰와 거의 동일하다. 템플릿 이름만 다르다. 나중에 이 중복을 수정할 겁니다.
 이제, polls/results.html 템플릿을 만듭니다.
 
-~~~
+```
 # polls/templates/polls/results.html
 <h1>{{ question.question_text }}</h1>
 
@@ -118,7 +119,7 @@ def results(request, question_id):
 </ul>
 
 <a href="{\% url 'polls:detail' question.id \%}">Vote again?</a>
-~~~
+```
 
 이제, 웹브라우저에서 /polls/1/ 페이지로 가서, 투푤르 해보세요. 당신이 투표를 할때마다 값이 반영된 결과 페이지를 볼 수 있을 것이다. 만약 당신이 설문지를 선택하지 않고 폼을 전송했다면, 오류 메시지를 보게 될 것이다. 
 
@@ -156,7 +157,7 @@ detail() (Tutorial 3에서 만든)과 results() 뷰는 매우 간단합니다. -
 
 먼저, polls/urls.py URLconf 를 열어 다음과 같이 변경하시오.
 
-~~~
+```
 # polls/urls.py
 from django.urls import path
 from . import views
@@ -168,7 +169,7 @@ urlpatterns = [
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
 ]
-~~~
+```
 
 두번째와 세번째 패턴의 정규식에서 일치하는 패턴의 이름이 <question_id>에서 <pk>로 변경되었다.
 
@@ -176,7 +177,7 @@ urlpatterns = [
 ## 조회수 수정
 다음으로 이전의 index, detail, results 뷰를 제거하고 장고의 일반적인 뷰를 대신 사용하겠다. 그렇게하려면 polls/views.py 파일을 열고 다음과 같이 변경하라.
 
-~~~
+```
 # polls/views.py
 
 from django.http import HttpResponseRedirect
@@ -207,7 +208,7 @@ class ResultsView(generic.DetailView):
 
 def vote(request, question_id):
     ... # same as above, no changes needed.
-~~~
+```
 
 [ListView](https://docs.djangoproject.com/ko/1.11/ref/class-based-views/generic-display/#django.views.generic.list.ListView)와 [DetailView](https://docs.djangoproject.com/ko/1.11/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView) 두 가지 제너릭 뷰를 사용하고 있습니다. 
 이 두보기는 각각 "display a list of object"와 "display a detail page for a particular type of object" 개념을 추상화합니다.
@@ -231,6 +232,4 @@ def vote(request, question_id):
 [Reference 한글](https://docs.djangoproject.com/ko/1.11/intro/tutorial04/)
 <br>
 [Reference 영문](https://docs.djangoproject.com/en/2.1/intro/tutorial04/)
-
-
 
