@@ -234,3 +234,18 @@ get_object_or_404() 함수는 Django 모델을 첫번째 인자로 받고, 몇�
 
 또한, get_object_or_404() 함수처럼 동작하는 get_list_or_404() 함수가 있다. get() 대신 filter()를 쓴다는 것이 다르다. 리스트가 비어있을 경우, Http404 예외를 발생시킨다.
 
+***
+## Template 시스템 사용하기
+poll 어플리케이션의 detail() view 로 되돌아 가봅시다. context 변수 question 이 주어졌을때, polls/detail.html 라는 template 이 어떻게 보이는지 봅시다.
+
+~~~
+# polls/templates/polls/detail.html
+
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+~~~
+
