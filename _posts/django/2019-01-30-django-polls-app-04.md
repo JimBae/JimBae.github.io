@@ -15,5 +15,8 @@ tag: [Django, Python]
 # polls/templates/polls/detail.html
 
 <h1>{{ question.question_text }}</h1>
+
+{\% if error_message \%}<p><strong>{{ error_message }}</strong></p>{\% endif \%}
+
 ```
 
