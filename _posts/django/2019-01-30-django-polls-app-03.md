@@ -125,9 +125,17 @@ polls/templates/polls 라고 만들 필요 없이, 그냥 polls/templates 에 �
 
 template에 다음과 같은 코드를 입력합니다.
 ~~~
-# polls/templates/polls/index.html
+polls/templates/polls/index.html
+{% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+            <li><a href="/polls/{{ question.id }}/">{{question.question_text }}</a><li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
 ~~~
-
 이제, template 을 이용하여 polls/views.py 에 index view를 업데이트 해보자.
 
 ~~~
@@ -250,17 +258,17 @@ template 에 대한 더 많은 정보는 [template 지침서](https://docs.djang
 <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
 ~~~
 
-이러한 하드코딩된 강결합 접근법의 문제는, 수많은 template 을 가진 project 의 URL 을 바꾸는게 어려운 일이 된다는 점입니다. 그러나, 이미 polls.urls 모듈의 url() 함수에서 인수의 이름을 정의 했으므로 이를 {% url %} template 태그에서 사용하여 특정 URL 경로의 의존성을 제거할 수 있습니다.
+이러한 하드코딩된 강결합 접근법의 문제는, 수많은 template 을 가진 project 의 URL 을 바꾸는게 어려운 일이 된다는 점입니다. 그러나, 이미 polls.urls 모듈의 url() 함수에서 인수의 이름을 정의 했으므로 이를 {\% url \%} template 태그에서 사용하여 특정 URL 경로의 의존성을 제거할 수 있습니다.
 
 ~~~
-<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+<li><a href="{\% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ~~~
 
 이것이 polls.urls 모듈에 서술된 URL 의 정의를 탐색하는 식으로 동작합니다. 다음과 같이 'detail' 이라는 이름의 URL 이 어떻게 정의되어 있는지 확인할 수 있습니다.
 
 ~~~
 ...
-# the 'name' value as called by the {% url %} template tag
+# the 'name' value as called by the {\% url \%} template tag
 path('<int:question_id>/', views.detail, name='detail'),
 ...
 ~~~
@@ -274,7 +282,7 @@ path('specifics/<int:question_id>/', views.detail, name='detail'),
 
 ***
 ## URL의 이름공간(Namespace) 나누기
-튜토리얼의 project 는 하나의 polls 라는 app 하나만 가지고 진행했습니다. 실제 Django 의 project 는 app 이 몇개라도 올 수 있습니다. Django 는 이 app 들의 URL 을 어떻게 구별해 낼까요? 예를 들어, polls app 은 detail 이라는 view 를 가지고 있고, 동일한 project 에 블로그를 위한 app 이 있을수도 있습니다. Django 가 {% url %} template 태그를 사용할 때, 어떤 app 의 view 에서 URL 을 생성할지 알 수 있을까요?
+튜토리얼의 project 는 하나의 polls 라는 app 하나만 가지고 진행했습니다. 실제 Django 의 project 는 app 이 몇개라도 올 수 있습니다. Django 는 이 app 들의 URL 을 어떻게 구별해 낼까요? 예를 들어, polls app 은 detail 이라는 view 를 가지고 있고, 동일한 project 에 블로그를 위한 app 이 있을수도 있습니다. Django 가 {\% url \%} template 태그를 사용할 때, 어떤 app 의 view 에서 URL 을 생성할지 알 수 있을까요?
 
 정답은 URLconf 에 이름공간(namespace)을 추가하는 것입니다. polls/urls.py 파일에 app_name 을 추가하여 어플리케이션의 이름공간을 설정할 수 있습니다.
 
