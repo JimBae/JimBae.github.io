@@ -251,7 +251,7 @@ $ python -c "import django; print(django.__path__)"
 
 이 방법을 사용하여 템플릿을 재정의하는 방법을 학습합니다. 실제 프로젝트에서는 아마 django.contrib.admin.AdminSite.site_header 속성을 사용하여이 개별 커스터마이징을보다 쉽게 만들 수 있습니다.
 
-이 템플릿 파일에는 {% block branding %}및 {{title}}과 같은 텍스트가 많이 포함되어 있습니다. {%와 {{태그들은 장고의 템플릿 언어의 일부입니다. Django가 admin/base_site.html을 렌더링 할 때, 이 템플릿 언어는 Tutorial 3 에서 보았 듯이 최종 HTML 페이지를 생성하기 위해 평가 될 것입니다.
+이 템플릿 파일에는 {\% block branding \%}및 {{title}}과 같은 텍스트가 많이 포함되어 있습니다. {%와 {{태그들은 장고의 템플릿 언어의 일부입니다. Django가 admin/base_site.html을 렌더링 할 때, 이 템플릿 언어는 Tutorial 3 에서 보았 듯이 최종 HTML 페이지를 생성하기 위해 평가 될 것입니다.
 
 Django의 기본 admin 템플릿 중 어떤 것도 덮어 쓸수 있습니다. 템플릿을 덮어 쓰려면, base_site.html로했던 것과 똑같은 일을 하면 됩니다 - 기본 디렉토리에서 그것을 커스텀 디렉토리로 복사하고 변경하십시오.
 
