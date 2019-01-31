@@ -243,9 +243,9 @@ poll 어플리케이션의 detail() view 로 되돌아 가봅시다. context 변
 
 <h1>{{ question.question_text }}</h1>
 <ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
 </ul>
 ~~~
 
