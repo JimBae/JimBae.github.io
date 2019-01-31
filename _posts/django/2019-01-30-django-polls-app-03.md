@@ -236,6 +236,7 @@ get_object_or_404() 함수는 Django 모델을 첫번째 인자로 받고, 몇�
 또한, get_object_or_404() 함수처럼 동작하는 get_list_or_404() 함수가 있다. get() 대신 filter()를 쓴다는 것이 다르다. 리스트가 비어있을 경우, Http404 예외를 발생시킨다.
 
 ***
+
 ## Template 시스템 사용하기
 poll 어플리케이션의 detail() view 로 되돌아 가봅시다. context 변수 question 이 주어졌을때, polls/detail.html 라는 template 이 어떻게 보이는지 봅시다.
 
@@ -245,7 +246,7 @@ poll 어플리케이션의 detail() view 로 되돌아 가봅시다. context 변
 
 template 시스템은 변수의 속성에 접근하기 위해 점-탐색(dot-lookup) 문법을 사용합니다. 예제의 {{ question.question_text }} 구문을 보면, Django 는 먼저 question 객체에 대해 사전형으로 탐색합니다. 탐색에 실패하게 되면 속성값으로 탐색합니다. (이 예에서는 속성값에서 탐색이 완료됩니다만) 만약 속성 탐색에도 실패한다면 리스트의 인덱스 탐색을 시도하게 됩니다.
 
-{% for %} 반복 구문에서 메소드 호출이 일어납니다. question.choice_set.all 은 Python 에서 question.choice_set.all() 코드로 해석되는데, 이때 반환된 Choice 객체의 반복자는 {% for %} 에서 사용하기 적당합니다.
+{\% for \%} 반복 구문에서 메소드 호출이 일어납니다. question.choice_set.all 은 Python 에서 question.choice_set.all() 코드로 해석되는데, 이때 반환된 Choice 객체의 반복자는 {\% for \%} 에서 사용하기 적당합니다.
 
 template 에 대한 더 많은 정보는 [template 지침서](https://docs.djangoproject.com/ko/1.11/topics/templates/) 를 참고하세요
 
