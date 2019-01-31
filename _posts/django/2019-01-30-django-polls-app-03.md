@@ -304,13 +304,13 @@ urlpatterns = [
 이제 polls/index.html template 의 기존 내용을
 ~~~
 # polls/templates/polls/index.html
-<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+<li><a href="{\% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ~~~
 
 아래와 같이 이름공간으로 나눠진 detail의 view를 가르키도록 변경하세요.
 ~~~
 # polls/templates/polls/index.html
-<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+<li><a href="{\% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 ~~~
 view를 작성하는 것이 익숙해졌으면, 다음 튜토리얼에서 간단한 서식처리와 generic view를 배워보자.
 
