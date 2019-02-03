@@ -44,7 +44,7 @@ nav:
     
     - { C++: '/blog/categories/#c' }
     - { Python: '/blog/categories/#python' }
-    - { C\#: '/blog/categories/#csharp' }
+    - { CSharp: '/blog/categories/#csharp' }
 
     - { Flask: '/blog/categories/#flask' }
     - { Django: '/blog/categories/#django' }
